@@ -1,7 +1,7 @@
 package com.example.assignmentspringboot.entity;
 
 import com.example.assignmentspringboot.entity.base.BaseEntity;
-import com.example.assignmentspringboot.entity.enums.OrderSimpleStatus;
+import com.example.assignmentspringboot.entity.myenum.OrderSimpleStatus;
 import lombok.*;
 
 import javax.persistence.*;
@@ -24,6 +24,7 @@ public class Order extends BaseEntity {
     private OrderSimpleStatus status;
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private Set<OrderDetail> orderDetails;
+    private boolean isShoppingCart;
 
     public void calculateTotalPrice() {
         this.totalPrice = new BigDecimal(0);
@@ -36,4 +37,3 @@ public class Order extends BaseEntity {
         }
     }
 }
-

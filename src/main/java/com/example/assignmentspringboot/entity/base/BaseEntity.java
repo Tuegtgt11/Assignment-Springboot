@@ -1,25 +1,24 @@
 package com.example.assignmentspringboot.entity.base;
 
 import lombok.*;
-import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
+@MappedSuperclass
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@MappedSuperclass
-public abstract class BaseEntity {
+public class BaseEntity {
     @CreatedDate
-    private LocalDateTime createdAt;
+    private LocalDateTime createAt;
     @LastModifiedDate
-    private LocalDateTime updatedAt;
-    private LocalDateTime deletedAt;
+    private LocalDateTime updateAt;
+    private LocalDateTime deleteAt;
     private String createdBy;
     private String updatedBy;
     private String deletedBy;

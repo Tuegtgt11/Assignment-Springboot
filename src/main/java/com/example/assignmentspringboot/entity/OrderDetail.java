@@ -18,19 +18,16 @@ import java.math.BigDecimal;
 public class OrderDetail {
     @EmbeddedId
     private OrderDetailId id;
-
     @ManyToOne
     @MapsId("orderId")
     @JoinColumn(name = "order_id", referencedColumnName = "id", nullable = false)
     @JsonBackReference
     private Order order;
-
     @ManyToOne
     @MapsId("productId")
     @JoinColumn(name = "product_id", referencedColumnName = "id", nullable = false)
     @JsonBackReference
     private Product product;
-    // thông tin thêm.
     private Integer quantity;
-    private BigDecimal unitPrice; // tl; dr;
+    private BigDecimal unitPrice;
 }

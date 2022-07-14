@@ -1,4 +1,4 @@
-package com.example.assignmentspringboot.entity.enums;
+package com.example.assignmentspringboot.entity.myenum;
 
 public enum OrderSimpleStatus {
     PENDING, PROCESSING, DONE, CANCEL;

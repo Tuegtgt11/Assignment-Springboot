@@ -1,34 +1,36 @@
 package com.example.assignmentspringboot.entity;
 
 import com.example.assignmentspringboot.entity.base.BaseEntity;
-import com.example.assignmentspringboot.entity.enums.ProductSimpleStatus;
-import lombok.*;
+import com.example.assignmentspringboot.entity.myenum.ProductStatus;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.util.UUID;
 
-@Getter
 @Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@ToString
 @Table(name = "products")
 public class Product extends BaseEntity {
     @Id
     private String id;
     private String name;
-    private String description;
-    private String detail; // text
-    private String thumbnail; // nhiều ảnh cách nhau bởi dấu ,
     private BigDecimal price;
+    private String description;
+    @Lob
+    private String detail; // text
+    private String thumbnails;
     @Enumerated(EnumType.ORDINAL)
-    private ProductSimpleStatus status;
-
-    @ManyToOne(cascade = CascadeType.ALL)
+    private ProductStatus status;
+    @ManyToOne
     @JoinColumn(name = "category_id")
-    Category category;
+    @JsonManagedReference
+    private Category category;
 
 }
